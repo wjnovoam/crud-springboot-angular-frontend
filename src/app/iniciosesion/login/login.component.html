@@ -1,0 +1,39 @@
+<form
+  class="login-form"
+  novalidate
+  [formGroup]="loginForm"
+  (ngSubmit)="iniciarSesion()"
+>
+  <h5>Iniciar Sesion</h5>
+  <input type="text" placeholder="Usuario" formControlName="username" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="
+      loginForm.get('username').hasError('required') &&
+      loginForm.get('username').touched
+    "
+  >
+    Usuario requerido
+  </div>
+  <input type="password" placeholder="Contraseña" formControlName="password" />
+  <p
+    class="error tamano"
+    style="color: red"
+    *ngIf="
+      loginForm.get('password').hasError('required') &&
+      loginForm.get('password').touched
+    "
+  >
+    Password Requerido
+  </p>
+  <input
+    class="btn-login"
+    type="submit"
+    [disabled]="loginForm.invalid"
+    value="Iniciar sesion"
+  />
+  <p class="message">
+    Registrarse? <span (click)="mostrarRegister()">Crear una cuenta</span>
+  </p>
+</form>

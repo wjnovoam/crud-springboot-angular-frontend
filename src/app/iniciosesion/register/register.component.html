@@ -1,0 +1,151 @@
+<form class="register-form" [formGroup]="user" (ngSubmit)="registrarUsuario()">
+  <h4>Registrarse</h4>
+  <input type="text" placeholder="Usuario" formControlName="username" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="
+      user.get('username').hasError('required') && user.get('username').touched
+    "
+  >
+    Usuario requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="username.errors?.minlength && !lastname.errors?.pattern"
+  >
+    El usuario debe tener al menos 4 caracteres
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="username.errors?.pattern"
+  >
+    El usario es solo letras y numeros
+  </div>
+  <input type="text" placeholder="Nombre" formControlName="name" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="user.get('name').hasError('required') && user.get('name').touched"
+  >
+    Nombre requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="name.errors?.minlength && !name.errors?.pattern"
+  >
+    El nombre debe tener al menos 4 caracteres
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="name.errors?.pattern"
+  >
+    El nombre es solo letras
+  </div>
+  <input type="text" placeholder="Apellido" formControlName="lastname" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="
+      user.get('lastname').hasError('required') && user.get('lastname').touched
+    "
+  >
+    Apellido requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="lastname.errors?.minlength && !lastname.errors?.pattern"
+  >
+    El apellido debe tener al menos 4 caracteres
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="lastname.errors?.pattern"
+  >
+    El apellido es solo letras
+  </div>
+  <input
+    type="text"
+    placeholder="Documento"
+    formControlName="document"
+    minlength="7"
+    maxlength="10"
+  />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="
+      user.get('document').hasError('required') && user.get('document').touched
+    "
+  >
+    Documento requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="document.errors?.minlength && !document.errors?.pattern"
+  >
+    El documento debe tener al menos 7 caracteres
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="document.errors?.maxlength"
+  >
+    El documento debe tener maximo 10 caracteres
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="document.errors?.pattern"
+  >
+    El documento es solo numeros
+  </div>
+  <input type="text" placeholder="Correo" formControlName="email" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="user.get('email').hasError('required') && user.get('email').touched"
+  >
+    Correo requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="email.errors?.pattern"
+  >
+    Correo incorrecto example@gmail.com
+  </div>
+  <input type="password" placeholder="Password" formControlName="password" />
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="
+      user.get('password').hasError('required') && user.get('password').touched
+    "
+  >
+    Password requerido
+  </div>
+  <div
+    class="error tamano mb-1"
+    style="color: red"
+    *ngIf="password.errors?.minlength"
+  >
+    La contraseña debe tener al menos 8 caracteres
+  </div>
+  <input
+    class="btn-login"
+    type="submit"
+    [disabled]="user.invalid"
+    value="Crear usuario"
+  />
+  <p class="message">
+    Ya esta registrado? <span (click)="mostrarLogin()">Iniciar Sesion</span>
+  </p>
+</form>

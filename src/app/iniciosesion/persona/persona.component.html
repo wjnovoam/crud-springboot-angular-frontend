@@ -1,0 +1,398 @@
+<!--<form class="login-form" novalidate [formGroup]="personaForm">
+  <div class="row mt-3">
+    <div class="row">
+      <div class="col">
+        <label class="form-label">Nombres</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="name"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('name').hasError('required') &&
+            personaForm.get('name').touched
+          "
+        >
+          Nombre requerido
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Text...."
+          formControlName="lastname"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('lastname').hasError('required') &&
+            personaForm.get('lastname').touched
+          "
+        >
+          Apellido requerido
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label">Documento</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ingree el documento."
+          formControlName="document"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('document').hasError('required') &&
+            personaForm.get('document').touched
+          "
+        >
+          Documento requerido
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label class="form-label">Edad</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Ingrese la edad"
+          formControlName="age"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('age').hasError('required') &&
+            personaForm.get('age').touched
+          "
+        >
+          Edad requerida
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label">Estatura</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Ingrese la estatura"
+          formControlName="estature"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('estature').hasError('required') &&
+            personaForm.get('estature').touched
+          "
+        >
+          Edad requerida
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label">Talla</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Ingrese la talla"
+          formControlName="talla"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('talla').hasError('required') &&
+            personaForm.get('talla').touched
+          "
+        >
+          Talla requerida
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label">Peso</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Ingrese el peso"
+          formControlName="peso"
+        />
+        <div
+          class="error tamano mb-1"
+          style="color: red"
+          *ngIf="
+            personaForm.get('peso').hasError('required') &&
+            personaForm.get('peso').touched
+          "
+        >
+          Peso requerido
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3 offset-md-3">
+      <input
+        type="button"
+        class="form-control btn btn-primary"
+        (click)="insertarPersona()"
+        value="Insertar"
+      />
+    </div>
+  </div>
+</form> -->
+<div class="container-fluid px-1 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <div class="card">
+        <h5 class="text-center mb-4">Registrar persona</h5>
+        <form class="form-card" novalidate [formGroup]="personaForm">
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Nombre<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                id="fname"
+                formControlName="name"
+                minlength="4"
+                placeholder="Ingrese el nombre"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('name').hasError('required') &&
+                  personaForm.get('name').touched
+                "
+              >
+                Nombre requerido
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="name.errors?.minlength"
+              >
+                El nombre debe tener al menos 4 caracteres
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="name.errors?.pattern"
+              >
+                El nombre es solo letras
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Apellidos<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                id="lname"
+                formControlName="lastname"
+                minlength="4"
+                placeholder="Ingrese el apellido"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('lastname').hasError('required') &&
+                  personaForm.get('lastname').touched
+                "
+              >
+                Apellido requerido
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="lastname.errors?.minlength"
+              >
+                El apellido debe tener al menos 4 caracteres
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="lastname.errors?.pattern"
+              >
+                El apellido es solo letras
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Documento<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                formControlName="document"
+                minlength="7"
+                maxlength="10"
+                placeholder="Ingrese el documento"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('document').hasError('required') &&
+                  personaForm.get('document').touched
+                "
+              >
+                Documento requerido
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="document.errors?.minlength && !document.errors?.pattern"
+              >
+                El documento debe tener al menos 7 caracteres
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="document.errors?.maxlength"
+              >
+                El documento debe tener maximo 10 caracteres
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="document.errors?.pattern"
+              >
+                El documento es solo numeros
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Edad<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                formControlName="age"
+                maxlength="2"
+                placeholder="Ingrese la edad"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('age').hasError('required') &&
+                  personaForm.get('age').touched
+                "
+              >
+                Edad requerido
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="age.errors?.pattern"
+              >
+                La edad es solo numeros
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Estatura<span class="text-danger"> *</span></label
+              >
+              <input
+                type="number"
+                formControlName="estature"
+                placeholder="Ingrese la estatura"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('estature').hasError('required') &&
+                  personaForm.get('estature').touched
+                "
+              >
+                Estatura requerida
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Talla<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                formControlName="talla"
+                maxlength="2"
+                placeholder="Ingrese la talla"
+              />
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="
+                  personaForm.get('talla').hasError('required') &&
+                  personaForm.get('talla').touched
+                "
+              >
+                Talla requerida
+              </div>
+              <div
+                class="error tamano mb-1"
+                style="color: red"
+                *ngIf="talla.errors?.pattern"
+              >
+                El talla es letras: XS, S, L, XL
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center text-left">
+            <div class="form-group col-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Peso<span class="text-danger"> *</span></label
+              >
+              <input
+                type="number"
+                formControlName="peso"
+                placeholder="Ingrese el peso"
+              />
+            </div>
+            <div
+              class="error tamano mb-1"
+              style="color: red"
+              *ngIf="
+                personaForm.get('peso').hasError('required') &&
+                personaForm.get('peso').touched
+              "
+            >
+              Peso requerido
+            </div>
+            <div
+              class="error tamano mb-1"
+              style="color: red"
+              *ngIf="peso.errors?.pattern"
+            >
+              El peso es solo numeros
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="form-group col-sm-6">
+              <button
+                type="submit"
+                class="btn-block btn-primary"
+                (click)="insertarPersona()"
+                [disabled]="personaForm.invalid"
+              >
+                Guardar persona
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

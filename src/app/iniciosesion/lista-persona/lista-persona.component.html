@@ -1,0 +1,48 @@
+<div class="row text-center mt-3"><h1>Listado de personas</h1></div>
+
+<div class="row mt-4">
+  <table class="table table-striped table-hover">
+    <thead align="center">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Estatura</th>
+        <th scope="col">Talla</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Tamaño</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody align="center">
+      <tr *ngFor="let persona of listaPersonas; let i = index">
+        <th scope="row">{{ persona.id }}</th>
+        <td>{{ persona.name }}</td>
+        <td>{{ persona.lastname }}</td>
+        <td>{{ persona.document }}</td>
+        <td>{{ persona.age }}</td>
+        <td>{{ persona.alture }}</td>
+        <td>{{ persona.size }}</td>
+        <td>{{ persona.weight }}</td>
+        <td *ngIf="persona.alture <= 1.6">Estatura baja</td>
+        <td *ngIf="persona.alture > 1.6">Estatura alta</td>
+        <td align="center">
+          <div class="d-flex justify-content-evenly">
+            <i
+              class="bi bi-pencil-square"
+              style="font-size: 1.3rem"
+              (click)="editarPersona(persona)"
+            ></i>
+            <i
+              class="bi bi-x-circle"
+              style="font-size: 1.3rem"
+              (click)="eliminarPersona(persona.id)"
+            ></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
